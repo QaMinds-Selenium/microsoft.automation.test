@@ -1,10 +1,12 @@
 package qaminds.curso.header;
 
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import pages.Windows11HomePage;
 import pages.WindowsHomePage;
 import pages.WindowsPage;
 import qaminds.curso.BaseTest;
+import utils.Screenshot;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,6 +16,13 @@ public class Windows11HomeTest extends BaseTest {
     public void validateWindows11HomePage(){
         //Paso 1 En home dar click en la opcion de windows
         WindowsHomePage whp = new WindowsHomePage(getDriver());
+        System.out.println(Screenshot.screenshot(getDriver()));
+
+        // Validar que el menu del home, este visible
+//        String[] menuList = {"Microsoft 365", "Teams", "Windows", "Surface", "Xbox", "Soporte"};
+//        assertThat(whp.getListMenuOptions()).contains(menuList);
+        assertThat(whp.isVisibleMenuList()).isTrue();
+
         WindowsPage wp = whp.onClickOptionWindows();
 
         // Paso 2: Dar click en la opcion optener Windows
