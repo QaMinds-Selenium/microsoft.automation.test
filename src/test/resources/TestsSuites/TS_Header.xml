@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="SuiteMicrosoft">
 
-    <test name="MobileTests">
-        <parameter name="platform" value="mobile"/>
+    <test name="DesktopTests">
+        <parameter name="platform" value="desktop"/>
         <classes>
-            <class name="qaminds.curso.header.MobileHeaderTest"/>
+            <class name="qaminds.curso.header.Windows11HomeTest"/>
         </classes>
     </test>
 

@@ -30,13 +30,14 @@ public class MobileHeaderTest extends HeaderTest {
 
         WebElement menuElement = getDriver().findElement(By.cssSelector("#uhf-c-nav > ul > li > div > ul > li.c-w0-contr > ul"));
 
-        //impiclited
+        //Explicit
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));//5
         wait.until(ExpectedConditions.visibilityOfAllElements(menuElement.findElements(By.tagName("a"))));
 
-        //explicited
+        //Implicit
         try {
             Thread.sleep(10000);//5000
+            getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -45,10 +46,12 @@ public class MobileHeaderTest extends HeaderTest {
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
 
-//        wait.until(ExpectedConditions.elementToBeClickable(getDriver().findElements(By.cssSelector("#uhf-c-nav > ul li.f-sub-menu > span")).get(0)));
-//        scroll();
+        List<WebElement> secondList = getDriver().findElements(By.cssSelector("#uhf-c-nav > ul li.f-sub-menu > button"));
 
-        List<String> mylist2 = getDriver().findElements(By.cssSelector("#uhf-c-nav > ul li.f-sub-menu > button")).stream()
+        wait.until(ExpectedConditions.elementToBeClickable(secondList.get(0)));
+//        scroll(secondList.get(5));
+
+        List<String> mylist2 = secondList.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
 
@@ -57,8 +60,9 @@ public class MobileHeaderTest extends HeaderTest {
         assertThat(mylist).contains(menuList);
     }
 
-    public void scroll(){
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", getDriver().findElement(By.cssSelector("#uhf-c-nav > ul li:nth-child(6).f-sub-menu > span")));
-    }
+//    public void scroll(WebElement element){
+//        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+//        js.executeScript("window.scrollBy(0,500)");
+//        js.executeScript("arguments[0].scrollIntoView();", element);
+//    }
 }
