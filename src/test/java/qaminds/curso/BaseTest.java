@@ -1,6 +1,7 @@
 package qaminds.curso;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +10,9 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import utils.WaitHelper;
 
+@Getter
 public class BaseTest {
 
     WebDriver driver;
@@ -34,9 +37,5 @@ public class BaseTest {
     @AfterTest
     public void afterTest(){
         driver.quit();
-    }
-
-    public WebDriver getDriver(){
-        return driver;
     }
 }
