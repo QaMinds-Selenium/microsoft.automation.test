@@ -1,4 +1,4 @@
-package qaminds.curso;
+package qaminds.curso.project;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Getter;
@@ -11,6 +11,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import utils.WaitHelper;
+
+import java.time.Duration;
 
 @Getter
 public class BaseTest {
@@ -30,6 +32,7 @@ public class BaseTest {
         }
 
         driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://www.microsoft.com/es-mx/");
     }

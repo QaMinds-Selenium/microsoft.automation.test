@@ -28,7 +28,7 @@ public class WindowsHomePage {
     }
 
     public boolean isVisibleMenuList(){
-        return wait.until(ExpectedConditions.visibilityOf(listMenuOptions())).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(listMenuOptions())).isDisplayed(); //
     }
 
     public List<String> getListMenuOptions(){

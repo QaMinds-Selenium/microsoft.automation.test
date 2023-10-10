@@ -28,15 +28,32 @@ public class WaitHelper {
         });
     }
 
-    public WebElement waitForElementByBy(By locator, Duration timeout, Duration pollingInterval) {
+    public WebElement waitForElementByBy(By locator /* By.id("id") */, int timeout /* El tiempo maximo que se va a esperar el elemento*/
+            , int pollingInterval /* Cada que tiempo se va a revisar si el elemento se encuentra disponible*/) {
+        // WebDriverWait X
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(timeout)
-                .pollingEvery(pollingInterval)
-                .ignoring(NoSuchElementException.class);
+                .withTimeout(Duration.ofSeconds(timeout)) // El tiempo maximo que va a esperar
+                .pollingEvery(Duration.ofSeconds(pollingInterval)) // Cada que tiempo va a validar el elemento
+                .ignoring(NoSuchElementException.class); // ignoramos excepciones
 
         return wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(locator);
+            }
+        });
+    }
+
+    public boolean waitForElement(By locator /* By.id("id") */, int timeout /* El tiempo maximo que se va a esperar el elemento*/
+            , int pollingInterval /* Cada que tiempo se va a revisar si el elemento se encuentra disponible*/) {
+        // WebDriverWait X
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(Duration.ofSeconds(timeout)) // El tiempo maximo que va a esperar
+                .pollingEvery(Duration.ofSeconds(pollingInterval)) // Cada que tiempo va a validar el elemento
+                .ignoring(NoSuchElementException.class); // ignoramos excepciones
+
+        return wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return driver.findElement(locator).isEnabled();
             }
         });
     }

@@ -1,13 +1,11 @@
-package qaminds.curso.header;
+package qaminds.curso.project.header;
 
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import pages.Windows11HomePage;
 import pages.WindowsHomePage;
 import pages.WindowsPage;
-import qaminds.curso.BaseTest;
+import qaminds.curso.project.BaseTest;
 import utils.Screenshot;
 
 import static org.assertj.core.api.Assertions.assertThat;

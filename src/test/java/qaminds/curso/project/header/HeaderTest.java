@@ -1,10 +1,9 @@
-package qaminds.curso.header;
+package qaminds.curso.project.header;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import qaminds.curso.BaseTest;
+import qaminds.curso.project.BaseTest;
 
 import java.util.List;
 import java.util.stream.Collectors;

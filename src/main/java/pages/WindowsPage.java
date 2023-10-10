@@ -17,11 +17,11 @@ public class WindowsPage {
     public WindowsPage(WebDriver driver){
         this.driver = driver;
         this.wait = new WaitHelper(driver);
-        wait.waitForElementByBy(By.id("uhfCatLogo"), Duration.ofSeconds(50), Duration.ofSeconds(5));
+        wait.waitForElementByBy(By.id("uhfCatLogo"), 10, 2);
     }
 
     public void onClickMenuOptionOptenerWindows(){
-        wait.waitForElementByWebElement(buttonMenuOptionOptenerWindows(), Duration.ofSeconds(50), Duration.ofSeconds(5)).click();
+        wait.waitForElementByWebElement(buttonMenuOptionOptenerWindows(), Duration.ofSeconds(10), Duration.ofSeconds(2)).click();
     }
 
     public Windows11HomePage onClickOptionWindows11Home(){
@@ -32,7 +32,8 @@ public class WindowsPage {
 
     // WebElements
     private WebElement buttonMenuOptionOptenerWindows(){
-        return driver.findElement(By.id("c-shellmenu_58"));
+        return wait.waitForElementByBy(By.id("c-shellmenu_58"), 10, 2);
+        //return driver.findElement(By.id("c-shellmenu_58"));
     }
 
     private WebElement buttonOptionWindows11Home(){

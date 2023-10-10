@@ -4,7 +4,7 @@
     <test name="DesktopTests">
         <parameter name="platform" value="desktop"/>
         <classes>
-            <class name="qaminds.curso.header.Windows11HomeTest"/>
+            <class name="qaminds.curso.project.header.Windows11HomeTest"/>
         </classes>
     </test>
 
